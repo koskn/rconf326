@@ -47,10 +47,10 @@ function search() {
     if (student && student.v12) {
         document.getElementById('v12').innerText = student.v12;
         document.getElementById('o12').innerText = student.o12 + "番目";
-        document.getElementById('s12').innerText = student.s12;
+        document.getElementById('s12').innerText = "Spot " + student.s12;
         document.getElementById('v34').innerText = student.v34;
         document.getElementById('o34').innerText = student.o34 + "番目";
-        document.getElementById('s34').innerText = student.s34;
+        document.getElementById('s34').innerText = "Spot " + student.s34;
         
         document.getElementById('result').classList.remove('hidden');
         document.getElementById('error').classList.add('hidden');
