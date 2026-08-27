@@ -158,7 +158,19 @@ button {
 
 .hidden { display: none; }
 .error { color: red; font-weight: bold; margin-top: 20px; }
-.survey-section { margin-top: 20px; }
+.survey-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.survey-note {
+    color: #666;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
 .survey-button {
     display: inline-block;
     padding: 12px 22px;
