@@ -13,8 +13,9 @@
 
         <div class="search-box">
             <select id="grade">
-                <option value="2">2年</option>
                 <option value="1">1年</option>
+                <option value="2">2年</option>
+                <option value="3">3年</option>
             </select>
             <select id="class">
                 <option value="A">A組</option>
@@ -26,6 +27,7 @@
                 <option value="G">G組</option>
                 <option value="H">H組</option>
                 <option value="I">I組</option>
+                <option value="J">J組</option>
                 </select>
             <select id="number">
                 <option value="1">01</option>
@@ -75,24 +77,70 @@
         </div>
 
         <div id="result" class="hidden">
-            <div class="session-card">
-                <h2>1・2時間目</h2>
-                <div class="info"><span class="label">会場:</span> <span id="v12" class="value"></span></div>
-                <div class="info"><span class="label">順番:</span> <span id="o12" class="value"></span></div>
-                <div class="info"><span class="label">Spot:</span> <span id="s12" class="value"></span></div>
+            <div id="session1" class="session-card">
+                <h2>1時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v1" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t1" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat1" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat1" class="label">自由座席</span></div>
+                </div>
+                <div id="special1" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想フォーム記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
             </div>
 
-            <div class="session-card">
-                <h2>3・4時間目</h2>
-                <div class="info"><span class="label">会場:</span> <span id="v34" class="value"></span></div>
-                <div class="info"><span class="label">順番:</span> <span id="o34" class="value"></span></div>
-                <div class="info"><span class="label">Spot:</span> <span id="s34" class="value"></span></div>
+            <div id="session2" class="session-card">
+                <h2>2時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v2" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t2" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat2" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat2" class="label">自由座席</span></div>
+                </div>
+                <div id="special2" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想フォーム記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+
+            <div id="session3" class="session-card">
+                <h2>3時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v3" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t3" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat3" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat3" class="label">自由座席</span></div>
+                </div>
+                <div id="special3" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想フォーム記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+
+            <div id="session4" class="session-card">
+                <h2>4時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v4" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t4" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat4" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat4" class="label">自由座席</span></div>
+                </div>
+                <div id="special4" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想フォーム記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
             </div>
         </div>
         <div id="error" class="error hidden">データが見つかりませんでした。</div>
-        <div>
-            <h2><a href="https://forms.gle/bzLGnY5xxruofJt17" target="_blank" class="form-link">課題研究振返りフォーム<br>（回答必須）</a></h2>
-         </div>
+        <div class="survey-section">
+            <a href="https://forms.gle/bHiRUAzHUN7BMuE66" target="_blank" rel="noopener noreferrer" class="survey-button"><sup>必須</sup>意識調査フォーム</a>
+        </div>
     </div>
 
     <script src="script.js"></script>

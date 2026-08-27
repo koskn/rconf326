@@ -25,8 +25,11 @@ function parseCSV(text) {
         const cols = line.split('\t'); // タブ区切りの場合。カンマなら ',' に変更
         return {
             no: cols[0],
-            v12: cols[1], o12: cols[2], s12: cols[3],
-            v34: cols[4], o34: cols[5], s34: cols[6]
+            sessions: [1, 4, 7, 10].map(start => ({
+                venue: cols[start],
+                tableNo: cols[start + 1],
+                seat: cols[start + 2]
+            }))
         };
     });
 }
@@ -44,13 +47,10 @@ function search() {
 
     const student = presentationData.find(d => d.no === targetNo);
 
-    if (student && student.v12) {
-        document.getElementById('v12').innerText = student.v12;
-        document.getElementById('o12').innerText = student.o12 + "番目";
-        document.getElementById('s12').innerText = student.s12;
-        document.getElementById('v34').innerText = student.v34;
-        document.getElementById('o34').innerText = student.o34 + "番目";
-        document.getElementById('s34').innerText = student.s34;
+    if (student && student.sessions[0].venue) {
+        student.sessions.forEach((session, index) => {
+            setSessionData(index + 1, session.venue, session.tableNo, session.seat, grade === '3');
+        });
         
         document.getElementById('result').classList.remove('hidden');
         document.getElementById('error').classList.add('hidden');
@@ -58,4 +58,40 @@ function search() {
         document.getElementById('result').classList.add('hidden');
         document.getElementById('error').classList.remove('hidden');
     }
+}
+
+function setSessionData(period, venue, tableNo, seat, isThirdGrade) {
+    const isRepresentativeSession = venue.trim() === 'CoTan大教室';
+    const isThirdGradeRepresentative = isRepresentativeSession && isThirdGrade;
+    const sessionCard = document.getElementById(`session${period}`);
+
+    document.getElementById(`v${period}`).innerText = venue;
+    document.getElementById(`t${period}`).innerText = tableNo;
+    renderSeatMap(document.getElementById(`seat${period}`), seat);
+
+    sessionCard.classList.toggle('representative-session', isRepresentativeSession);
+    sessionCard.classList.toggle('third-grade-representative', isThirdGradeRepresentative);
+    document.getElementById(`special${period}`).classList.toggle('hidden', !isRepresentativeSession);
+    document.getElementById(`freeSeat${period}`).innerText = isThirdGradeRepresentative ? '前方代表者席' : '自由座席';
+}
+
+function renderSeatMap(container, selectedSeat) {
+    const seatOrder = [1, 2, 5, 6, 3, 4];
+    const selected = String(selectedSeat).trim();
+
+    container.replaceChildren();
+    container.setAttribute('aria-label', `テーブル指定席 ${selected}`);
+
+    seatOrder.forEach(seatNumber => {
+        const seatCell = document.createElement('span');
+        seatCell.className = 'seat-cell';
+
+        if (String(seatNumber) === selected) {
+            seatCell.innerText = '★';
+            seatCell.classList.add('selected');
+            seatCell.setAttribute('aria-current', 'true');
+        }
+
+        container.appendChild(seatCell);
+    });
 }
