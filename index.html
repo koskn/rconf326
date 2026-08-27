@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>R-Conference</h2>
+        <h2 class="site-title">R-Conference</h2>
         <p class="subtitle">発表会場検索<br><span style="font-size: smaller;">事前に欠席が分かっている生徒の登録はありません</span></p>
 
         <div class="search-box">
@@ -73,10 +73,11 @@
                 <option value="41">41</option>
                 <option value="42">42</option>
                 </select>番
-            <button onclick="search()">表示</button>
+            <button onclick="search()">検索</button>
         </div>
 
         <div id="result" class="hidden">
+            <p id="currentStudent" class="current-student"></p>
             <div id="session1" class="session-card">
                 <h2>1時間目</h2>
                 <div class="session-details">

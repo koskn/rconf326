@@ -48,6 +48,7 @@ function search() {
     const student = presentationData.find(d => d.no === targetNo);
 
     if (student && student.sessions[0].venue) {
+        document.getElementById('currentStudent').innerText = `${grade}年${cls}組${num}番 表示中`;
         student.sessions.forEach((session, index) => {
             setSessionData(index + 1, session.venue, session.tableNo, session.seat, grade === '3');
         });
@@ -55,6 +56,7 @@ function search() {
         document.getElementById('result').classList.remove('hidden');
         document.getElementById('error').classList.add('hidden');
     } else {
+        document.getElementById('currentStudent').innerText = '';
         document.getElementById('result').classList.add('hidden');
         document.getElementById('error').classList.remove('hidden');
     }
