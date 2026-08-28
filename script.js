@@ -7,12 +7,21 @@ window.onload = async () => {
         const text = await response.text();
         presentationData = parseCSV(text);
 
-        // 保存された値を復元
-        if (localStorage.getItem('grade')) {
-            document.getElementById('grade').value = localStorage.getItem('grade');
-            document.getElementById('class').value = localStorage.getItem('class');
-            document.getElementById('number').value = localStorage.getItem('number');
+        // 保存された値がすべてある場合だけ復元
+        const savedGrade = localStorage.getItem('grade');
+        const savedClass = localStorage.getItem('class');
+        const savedNumber = localStorage.getItem('number');
+
+        if (savedGrade && savedClass && savedNumber) {
+            removePlaceholderOptions();
+            document.getElementById('grade').value = savedGrade;
+            document.getElementById('class').value = savedClass;
+            document.getElementById('number').value = savedNumber;
             search(); // 自動検索
+        } else {
+            document.getElementById('grade').value = '';
+            document.getElementById('class').value = '';
+            document.getElementById('number').value = '';
         }
     } catch (e) {
         console.error("データの読み込みに失敗しました", e);
@@ -37,7 +46,18 @@ function parseCSV(text) {
 function search() {
     const grade = document.getElementById('grade').value;
     const cls = document.getElementById('class').value;
-    const num = document.getElementById('number').value.padStart(2, '0');
+    const selectedNumber = document.getElementById('number').value;
+
+    if (!grade || !cls || !selectedNumber) {
+        document.getElementById('result').classList.add('hidden');
+        document.getElementById('error').innerText = '学年・組・番号を選択してください。';
+        document.getElementById('error').classList.remove('hidden');
+        return;
+    }
+
+    removePlaceholderOptions();
+
+    const num = selectedNumber.padStart(2, '0');
     const targetNo = `${grade}${cls}(${num})`;
 
     // 入力値を保存
@@ -58,8 +78,13 @@ function search() {
     } else {
         document.getElementById('currentStudent').innerText = '';
         document.getElementById('result').classList.add('hidden');
+        document.getElementById('error').innerText = 'データが見つかりませんでした。';
         document.getElementById('error').classList.remove('hidden');
     }
+}
+
+function removePlaceholderOptions() {
+    document.querySelectorAll('.placeholder-option').forEach(option => option.remove());
 }
 
 function setSessionData(period, venue, tableNo, seat, isThirdGrade) {
