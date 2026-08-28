@@ -106,8 +106,9 @@ button {
 }
 .hex-seat-svg {
     display: block;
-    width: 92px;
+    width: 84px;
     height: 84px;
+    margin: 0 auto;
     overflow: visible;
 }
 .hex-seat-section {

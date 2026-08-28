@@ -114,12 +114,12 @@ function renderHexSeatMap(container, selectedSeat) {
     const svgNamespace = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNamespace, 'svg');
     const seats = [
-        { number: 1, points: '1,25 50,1 50,50', starX: 34, starY: 26 },
-        { number: 2, points: '50,1 99,25 50,50', starX: 66, starY: 26 },
-        { number: 6, points: '99,25 99,75 50,50', starX: 82, starY: 50 },
-        { number: 4, points: '99,75 50,99 50,50', starX: 66, starY: 74 },
-        { number: 3, points: '50,99 1,75 50,50', starX: 34, starY: 74 },
-        { number: 5, points: '1,75 1,25 50,50', starX: 18, starY: 50 }
+        { number: 1, points: '8,25.5 50,1 50,50', starX: 36, starY: 25.5 },
+        { number: 2, points: '50,1 92,25.5 50,50', starX: 64, starY: 25.5 },
+        { number: 6, points: '92,25.5 92,74.5 50,50', starX: 78, starY: 50 },
+        { number: 4, points: '92,74.5 50,99 50,50', starX: 64, starY: 74.5 },
+        { number: 3, points: '50,99 8,74.5 50,50', starX: 36, starY: 74.5 },
+        { number: 5, points: '8,74.5 8,25.5 50,50', starX: 22, starY: 50 }
     ];
 
     svg.setAttribute('viewBox', '0 0 100 100');
