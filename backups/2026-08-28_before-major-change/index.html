@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-Conference 発表会場検索</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="site-title">R-Conference</h2>
+        <p class="subtitle">発表会場検索<br><span style="font-size: smaller;">事前に欠席が分かっている生徒の登録はありません</span></p>
+
+        <div class="search-box">
+            <select id="grade">
+                <option value="1">1年</option>
+                <option value="2">2年</option>
+                <option value="3">3年</option>
+            </select>
+            <select id="class">
+                <option value="A">A組</option>
+                <option value="B">B組</option>
+                <option value="C">C組</option>
+                <option value="D">D組</option>
+                <option value="E">E組</option>
+                <option value="F">F組</option>
+                <option value="G">G組</option>
+                <option value="H">H組</option>
+                <option value="I">I組</option>
+                <option value="J">J組</option>
+                </select>
+            <select id="number">
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                </select>番
+            <button onclick="search()">検索</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <p id="currentStudent" class="current-student"></p>
+            <div id="session1" class="session-card">
+                <h2>1時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v1" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t1" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat1" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat1" class="label">自由座席</span></div>
+                </div>
+                <div id="special1" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+
+            <div id="session2" class="session-card">
+                <h2>2時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v2" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t2" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat2" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat2" class="label">自由座席</span></div>
+                </div>
+                <div id="special2" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+
+            <div id="session3" class="session-card">
+                <h2>3時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v3" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t3" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat3" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat3" class="label">自由座席</span></div>
+                </div>
+                <div id="special3" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+
+            <div id="session4" class="session-card">
+                <h2>4時間目</h2>
+                <div class="session-details">
+                    <div class="info"><span class="label">会場</span><span id="v4" class="value venue-value"></span></div>
+                    <div class="info table-info"><span class="label">テーブルNo.</span><span id="t4" class="value table-value"></span></div>
+                    <div class="info seat-info"><span class="label">テーブル指定席</span><div id="seat4" class="seat-map"></div></div>
+                    <div class="info free-seating-info"><span id="freeSeat4" class="label">自由座席</span></div>
+                </div>
+                <div id="special4" class="special-session hidden">
+                    <strong>高3代表セッション</strong>
+                    <a href="https://forms.gle/dqdXae6LUykyhffv5" target="_blank" rel="noopener noreferrer"><sup>必須</sup>質問・感想記入</a>
+                    <span class="representative-label">代表発表</span>
+                </div>
+            </div>
+        </div>
+        <div id="error" class="error hidden">データが見つかりませんでした。</div>
+        <div class="survey-section">
+            <span class="survey-note">最後に回答</span>
+            <a href="https://forms.gle/bHiRUAzHUN7BMuE66" target="_blank" rel="noopener noreferrer" class="survey-button"><sup>必須</sup>意識調査フォーム</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
